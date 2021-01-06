@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webadds.WebAdds.dao.AdvertiseDao;
+import com.webadds.WebAdds.dao.RecordDao;
 import com.webadds.WebAdds.entity.Advertise;
+import com.webadds.WebAdds.entity.AssignRecord;
 import com.webadds.WebAdds.pojos.ApplicationUser;
 import com.webadds.WebAdds.service.ApplicationUserServiceImpl;
 
@@ -32,6 +34,9 @@ public class AdminController {
 	@Autowired
 	private ApplicationUserServiceImpl userService;
 	
+	@Autowired
+	private RecordDao recordDao;
+	
 	@GetMapping("dashboard")
 	public String adminDashboard() {
 		return "dashboard";
@@ -44,16 +49,20 @@ public class AdminController {
 		this.assignedUsersId = new ArrayList<Integer>();
 	}
 	
-	@GetMapping("all-adds")
-	public String showAllAdds(Model model) {
-		List<Advertise> advertises = advertiseDao.findAll();
-		model.addAttribute("advertises", advertises);
-		return "all-adds";
-	}
 	
 	@GetMapping("add")
 	public String doAddAsignment(@RequestParam("id") int addId,
 								Model model) {
+//		this.assignedUsersId = new ArrayList<>();
+		
+		List<AssignRecord> recordsForAddId = recordDao.getRecordsForAddId(addId);
+		
+		if(recordsForAddId != null) {
+			for(AssignRecord record : recordsForAddId ) {
+				this.assignedUsersId.add(record.getUserId());
+			}
+		}
+		
 		Advertise advertise = null;
 		List<ApplicationUser> users = null;
 		List<ApplicationUser> assignedusers = null;
@@ -110,8 +119,44 @@ public class AdminController {
 	
 	@GetMapping("assign-users")
 	public String assignUsers(@RequestParam("addId") int addId) {
-		System.out.println("submitted user are :"+this.assignedUsersId);
-		System.out.println("for addId:"+addId);
+		System.out.println(this.assignedUsersId+" have been assigned for "+addId+" addId");
+		
+		int points = advertiseDao.getAddpointById(addId);
+		
+		for(Integer userId : assignedUsersId) {
+			recordDao.save(new AssignRecord(0, userId, addId, points, 0));
+		}
+		this.assignedUsersId = new ArrayList<>();
+		
+		Optional<Advertise> result = advertiseDao.findById(addId);
+		Advertise advertise = result.get();
+		advertise.setIsAssigned(1);
+		advertiseDao.save(advertise);
+		
+		return "redirect:all-adds";
+	}
+	
+	@GetMapping("all-adds")
+	public String showAllAdds(Model model) {
+		this.assignedUsersId = new ArrayList<>();
+		List<Advertise> advertises = advertiseDao.findAll();
+		model.addAttribute("advertises", advertises);
+		return "all-adds";
+	}
+	
+	@GetMapping("unasigned-adds")
+	public String getUnassignedAdds(Model model) {
+		this.assignedUsersId = new ArrayList<>();
+		List<Advertise> advertises = advertiseDao.getUnAssignedAdds();
+		model.addAttribute("advertises", advertises);
+		return "all-adds";
+	}
+	
+	@GetMapping("assigned-adds")
+	public String getAssignedAdds(Model model) {
+		this.assignedUsersId = new ArrayList<>();
+		List<Advertise> advertises = advertiseDao.getAssignedAdds();
+		model.addAttribute("advertises", advertises);
 		return "all-adds";
 	}
 }

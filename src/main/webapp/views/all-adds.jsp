@@ -29,8 +29,13 @@
 							<p class="card-text">${advertise.description} Some quick example text to build on the
 								card title and make up the bulk of the card's content.</p>
 								<div class="w-100">
-									<a href="add?id=${advertise.id}" class="btn btn-primary mr-auto">Assign add</a>
-									<div class="d-inline-block">50p</div>
+									<c:if test="${advertise.isAssigned == 0}">
+										<a href="add?id=${advertise.id}" class="btn btn-primary mr-auto">Assign add</a>										
+									</c:if>
+									<c:if test="${advertise.isAssigned == 1}">
+										<a href="add?id=${advertise.id}" class="btn btn-success disabled mr-auto">Assigned</a>
+									</c:if>
+									<div class="d-inline-block">${advertise.points} Pts</div>
 								</div>
 						</div>
 					</div>
@@ -57,5 +62,8 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+		
+		
+	<script type="text/javascript" src="../js/script.js"></script>
 </body>
 </html>

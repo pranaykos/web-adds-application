@@ -24,7 +24,7 @@ public class ApplicationUser {
 	@Size(min=1, message="Password is Required")
 	private String password;
 	
-	@NotNull(message="Confirm password is Required")
+	@NotNull(message="Cfm. password is Required")
 	@Size(min=1, message="Confirm password is Required")
 	private String confirmPassword;
 	

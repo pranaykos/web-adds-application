@@ -27,14 +27,16 @@
 		<div class="row">
 			<div class="w-25 mx-auto my-4">
 				<form class="form-signin" method="post" action="/login-process">
-					<h2 class="form-signin-heading display-4 my-4">Sign In</h2>
+					<h2 class="form-signin-heading display-4 my-4">Login</h2>
 					<p>
-						<label for="username" class="sr-only">Username</label> <input
+						<label for="username" class="sr-only">Username</label> 
+						<input
 							type="text" id="username" name="username" class="form-control"
 							placeholder="Username" required autofocus>
 					</p>
 					<p>
-						<label for="password" class="sr-only">Secret Password</label> <input
+						<label for="password" class="sr-only">Secret Password</label> 
+						<input
 							type="password" id="password" name="password"
 							class="form-control" placeholder="Password" required>
 					</p>
