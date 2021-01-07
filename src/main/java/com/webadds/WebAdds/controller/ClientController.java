@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.webadds.WebAdds.entity.Advertise;
+import com.webadds.WebAdds.entity.Client;
 import com.webadds.WebAdds.pojos.ApplicationClient;
 import com.webadds.WebAdds.pojos.ApplicationUser;
 import com.webadds.WebAdds.service.AddService;
@@ -32,14 +33,30 @@ public class ClientController {
 	private ClientService clientService;
 
 	@GetMapping("profile")
-	public String showProfilePage() {
+	public String showProfilePage(Model model) {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			username = ((UserDetails)principal).getUsername();
+		}else {
+			username = principal.toString();
+		}
+		
+		Client client = clientService.getClientByUsername(username);
+		model.addAttribute("client",client);
+		
+		int assignedAdds = 0;
+		
+		for(Advertise advertise : client.getAdvertises()) {
+			if(advertise.getIsAssigned() == 1) {
+				assignedAdds++;
+			}
+		}
+		
+		model.addAttribute("totalAssigned", assignedAdds);
 		return "client-profile";
 	}
 	
-	@GetMapping("upload-add")
-	public String uploadAddForm() {
-		return "add-form";
-	}
 	
 	@GetMapping("register")
 	public String clientRegisterForm(Model model) {
@@ -53,6 +70,11 @@ public class ClientController {
 		System.out.println("Added client is "+client);
 		clientService.registerClient(client);
 		return "redirect:/";
+	}
+	
+	@GetMapping("upload-add")
+	public String uploadAddForm() {
+		return "add-form";
 	}
 	
 	@PostMapping("upload-add")
@@ -75,7 +97,38 @@ public class ClientController {
 		
 		addService.registerAdd(advertise, username, addImage);
 		
-		return "add-form";
+		return "redirect:all-adds";
+	}
+	
+	@GetMapping("all-adds")
+	public String showAllUploadedAdds(Model model) {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			username = ((UserDetails)principal).getUsername();
+		}else {
+			username = principal.toString();
+		}
+		
+		Client client = clientService.getClientByUsername(username);
+		model.addAttribute("advertises", client.getAdvertises());
+		return "all-uploaded-adds";
+	}
+	
+	@GetMapping("add-report")
+	public String addReport(Model model) {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			username = ((UserDetails)principal).getUsername();
+		}else {
+			username = principal.toString();
+		}
+		
+		Client client = clientService.getClientByUsername(username);
+		
+		model.addAttribute("advertises", client.getAdvertises());
+		return "add-report";
 	}
 	
 	@InitBinder

@@ -34,13 +34,13 @@
 
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<th>${user.id}</th>
-						<th>${user.firstName}</th>
-						<th>${user.lastName}</th>
-						<th>${user.emailId}</th>
-						<th>${user.mobileNo}</th>
-						<th>${user.country}</th>
-						<th>${user.points} Pts</th>
+						<td>${user.id}</td>
+						<td>${user.firstName}</td>
+						<td>${user.lastName}</td>
+						<td>${user.emailId}</td>
+						<td>${user.mobileNo}</td>
+						<td>${user.country}</td>
+						<td>${user.points} Pts</td>
 					</tr>
 				</c:forEach>
 			</tbody>

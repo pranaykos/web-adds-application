@@ -33,11 +33,11 @@
 				<c:forEach items="${clients}" var="client">
 
 					<tr>
-						<th>${client.id}</th>
-						<th>${client.username}</th>
-						<th>${client.email}</th>
-						<th>${client.companyName}</th>
-						<th>${client.totalAdds}</th>
+						<td>${client.id}</td>
+						<td>${client.username}</td>
+						<td>${client.email}</td>
+						<td class="text-capitalize">${client.companyName}</td>
+						<td>${client.totalAdds}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

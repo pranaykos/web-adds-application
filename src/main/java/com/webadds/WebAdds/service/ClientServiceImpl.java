@@ -40,4 +40,9 @@ public class ClientServiceImpl implements ClientService {
 	public List<Client> getAllClients() {
 		return clientDao.findAll();
 	}
+
+	@Override
+	public Client getClientByUsername(String username) {
+		return clientDao.findByUsername(username);
+	}
 }

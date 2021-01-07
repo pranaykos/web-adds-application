@@ -9,4 +9,5 @@ public interface ClientService {
 
 	public void registerClient(ApplicationClient applicationClient);
 	public List<Client> getAllClients();
+	public Client getClientByUsername(String username);
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,6 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -26,49 +26,62 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="profile">Profile</a>
+				<li class="nav-item "><a class="nav-link" href="profile">Profile</a>
 				</li>
 				<li class="nav-item "><a class="nav-link" href="all-adds">All
 						adds</a></li>
-				<li class="nav-item "><a class="nav-link" href="add-report">Adds
-						report</a></li>
-				<li class="nav-item "><a class="nav-link" href="upload-add">New Add</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="add-report">Adds report</a></li>
+				<li class="nav-item "><a class="nav-link" href="upload-add">New
+						Add</a></li>
 				<li class="nav-item "><a class="nav-link" href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>
 	</nav>
 
+	<div class="container my-5">
+		<h1 class="display-4 text-center mb-4">Overall report</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Add Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">descrition</th>
+					<th scope="col">AssignStatus</th>
+					<th scope="col">CreatedOn</th>
+					<th scope="col">Total assigned</th>
+					<th scope="col">Total view</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<c:forEach items="${advertises}" var="advertis">
+
+					<tr>
+						<td>${advertis.id}</td>
+						<td>${advertis.titleName}</td>
+						<td>${advertis.description}</td>
+
+						<c:if test="${advertis.isAssigned == 1}">
+							<td>Assigned</td>
+						</c:if>
+
+						<c:if test="${advertis.isAssigned == 0}">
+							<td>Not assigned</td>
+						</c:if>
+
+						<td>${advertis.createdOn}</td>
+						<td>${advertis.totalAssigned}</td>
+						<td>${advertis.totalView}</td>
+					</tr>
+
+				</c:forEach>
 
 
-	<div class="container mt-5">
-		<div class="card">
-			<h5 class="card-header text-capitalize">${client.companyName}</h5>
-			<div class="card-body">
-
-				<div class="row">
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Email</h5>
-						<p class="card-text">${client.email}</p>
-					</div>
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Username</h5>
-						<p class="card-text">${client.username}</p>
-					</div>
-					<div class="col-md-6">
-						<h5 class="card-title mb-1">Total adds</h5>
-						<p class="card-text">${client.totalAdds}</p>
-					</div>
-					<div class="col-md-6">
-						<h5 class="card-title mb-1">Assigned adds</h5>
-						<p class="card-text">${totalAssigned}</p>
-					</div>
-				</div>
-			</div>
-			<a href="upload-add" class="btn btn-outline-primary">Upload add</a>
-		</div>
+			</tbody>
+		</table>
 	</div>
-
 
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

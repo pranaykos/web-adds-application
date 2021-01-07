@@ -127,20 +127,19 @@ public class AdminController {
 	
 	@GetMapping("assign-users")
 	public String assignUsers(@RequestParam("addId") int addId) {
-		System.out.println(this.assignedUsersId+" have been assigned for "+addId+" addId");
-		
 		int points = advertiseDao.getAddpointById(addId);
 		
 		for(Integer userId : assignedUsersId) {
 			recordDao.save(new AssignRecord(0, userId, addId, points, 0));
 		}
-		this.assignedUsersId = new ArrayList<>();
 		
 		Optional<Advertise> result = advertiseDao.findById(addId);
 		Advertise advertise = result.get();
 		advertise.setIsAssigned(1);
+		advertise.setTotalAssigned(this.assignedUsersId.size());
 		advertiseDao.save(advertise);
 		
+		this.assignedUsersId = new ArrayList<>();
 		return "redirect:all-adds";
 	}
 	
@@ -177,8 +176,6 @@ public class AdminController {
 	
 	@GetMapping("all-clients")
 	public String showAllClients(Model model) {
-		List<Client> allClients = clientService.getAllClients();
-		System.out.println("Here are the all clients "+allClients);
 		model.addAttribute("clients", clientService.getAllClients());
 		return "all-clients";
 	}

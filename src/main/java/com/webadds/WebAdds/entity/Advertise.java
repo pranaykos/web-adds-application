@@ -1,5 +1,7 @@
 package com.webadds.WebAdds.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,9 @@ public class Advertise {
 	private int points;
 	private String createdBy;
 	private int isAssigned;
+	private Date createdOn;
+	private int totalAssigned;
+	private int totalView;
 
 	@ManyToOne
 	private Client client;
@@ -38,6 +43,9 @@ public class Advertise {
 		this.points = points;
 		this.createdBy = createdBy;
 		this.isAssigned = 0;
+		this.createdOn = new Date();
+		this.totalAssigned = 0;
+		this.totalView = 0;
 	}
 
 	public int getId() {
@@ -102,6 +110,30 @@ public class Advertise {
 
 	public void setIsAssigned(int isAssigned) {
 		this.isAssigned = isAssigned;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public int getTotalAssigned() {
+		return totalAssigned;
+	}
+
+	public void setTotalAssigned(int totalAssigned) {
+		this.totalAssigned = totalAssigned;
+	}
+
+	public int getTotalView() {
+		return totalView;
+	}
+
+	public void setTotalView(int totalView) {
+		this.totalView = totalView;
 	}
 
 	@Override
