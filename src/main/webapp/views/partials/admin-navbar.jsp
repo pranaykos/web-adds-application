@@ -20,10 +20,10 @@
         <a class="nav-link" href="unasigned-adds">Unassigned Adds</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">All clients</a>
+        <a class="nav-link" href="all-clients">All clients</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">All Users</a>
+        <a class="nav-link" href="all-users">All Users</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Redemption</a>

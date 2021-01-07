@@ -1,5 +1,7 @@
 package com.webadds.WebAdds.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,5 +34,10 @@ public class ClientServiceImpl implements ClientService {
 		client.setRole("ROLE_CLIENT");
 		
 		return client;
+	}
+
+	@Override
+	public List<Client> getAllClients() {
+		return clientDao.findAll();
 	}
 }

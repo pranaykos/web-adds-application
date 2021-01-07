@@ -13,7 +13,7 @@ import com.webadds.WebAdds.entity.User;
 import com.webadds.WebAdds.pojos.ApplicationUser;
 
 @Service
-public class ApplicationUserServiceImpl implements AppUserService {
+public class AppUserServiceImpl implements AppUserService {
 
 	@Autowired
 	private PasswordEncoder encoder;
@@ -48,7 +48,7 @@ public class ApplicationUserServiceImpl implements AppUserService {
 		List<ApplicationUser> applicationUsers = userDao.findAll()
 				.stream()
 				.map(user -> new ApplicationUser(user.getId(), user.getName(), user.getEmailId(),
-						"", user.getFirstName(), user.getLastName(), user.getAddress(), user.getCountry(), "", "", user.getPoints()))
+						"", user.getFirstName(), user.getLastName(), user.getAddress(), user.getCountry(), user.getMobileNo(), "", user.getPoints()))
 				.collect(Collectors.toList());
 		
 		return applicationUsers;

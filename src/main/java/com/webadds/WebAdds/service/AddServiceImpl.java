@@ -46,9 +46,15 @@ public class AddServiceImpl implements AddService {
 			advertise.setImagePath(addImage.getOriginalFilename());
 			
 			Client client = clientDao.findByUsername(username);
+			// New code start
+			int totalAdds = client.getTotalAdds();
+			client.setTotalAdds(++totalAdds);
 			
+			clientDao.save(client);
+			
+			// New code end
 			advertise.setClient(client);
-			advertise.setImagePath("https://localhost:8080/images/"+addImage.getOriginalFilename());
+			advertise.setImagePath("http://localhost:8080/images/"+addImage.getOriginalFilename());
 			addvertiseDao.save(advertise);
 		}else {
 			System.out.println("Something went wrong");

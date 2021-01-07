@@ -17,6 +17,7 @@ public class AssignRecord {
 	private int userId;
 	private int addId;
 	private int points;
+	private int isSeen;
 	private int isClaimed;
 	public AssignRecord() {
 		super();
@@ -29,6 +30,7 @@ public class AssignRecord {
 		this.addId = addId;
 		this.points = points;
 		this.isClaimed = isClaimed;
+		this.isSeen = 0;
 	}
 	public int getId() {
 		return id;
@@ -60,6 +62,20 @@ public class AssignRecord {
 	public void setClaimed(int isClaimed) {
 		this.isClaimed = isClaimed;
 	}
+	public int getIsSeen() {
+		return isSeen;
+	}
+	public void setIsSeen(int isSeen) {
+		this.isSeen = isSeen;
+	}
+	public int getIsClaimed() {
+		return isClaimed;
+	}
+	public void setIsClaimed(int isClaimed) {
+		this.isClaimed = isClaimed;
+	}
+	
+	
 	
 	
 }

@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webadds.WebAdds.authService.ApplicationUserService;
 import com.webadds.WebAdds.dao.AdvertiseDao;
 import com.webadds.WebAdds.dao.RecordDao;
 import com.webadds.WebAdds.entity.Advertise;
 import com.webadds.WebAdds.entity.AssignRecord;
+import com.webadds.WebAdds.entity.Client;
 import com.webadds.WebAdds.pojos.ApplicationUser;
-import com.webadds.WebAdds.service.ApplicationUserServiceImpl;
+import com.webadds.WebAdds.service.AppUserService;
+import com.webadds.WebAdds.service.AppUserServiceImpl;
+import com.webadds.WebAdds.service.ClientService;
 
 
 @Controller
@@ -32,7 +36,11 @@ public class AdminController {
 	private AdvertiseDao advertiseDao;
 	
 	@Autowired
-	private ApplicationUserServiceImpl userService;
+	private AppUserService userService;
+	
+	@Autowired
+	private ClientService clientService;
+	
 	
 	@Autowired
 	private RecordDao recordDao;
@@ -136,6 +144,7 @@ public class AdminController {
 		return "redirect:all-adds";
 	}
 	
+	
 	@GetMapping("all-adds")
 	public String showAllAdds(Model model) {
 		this.assignedUsersId = new ArrayList<>();
@@ -158,5 +167,19 @@ public class AdminController {
 		List<Advertise> advertises = advertiseDao.getAssignedAdds();
 		model.addAttribute("advertises", advertises);
 		return "all-adds";
+	}
+	
+	@GetMapping("all-users")
+	public String showAllUsers(Model model) {
+		model.addAttribute("users", userService.getAllUsers());
+		return "all-users";
+	}
+	
+	@GetMapping("all-clients")
+	public String showAllClients(Model model) {
+		List<Client> allClients = clientService.getAllClients();
+		System.out.println("Here are the all clients "+allClients);
+		model.addAttribute("clients", clientService.getAllClients());
+		return "all-clients";
 	}
 }

@@ -23,6 +23,7 @@ public class Client {
 	private String companyName;
 	private String username;
 	private String password;
+	private int totalAdds;
 	private String role;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
@@ -40,6 +41,7 @@ public class Client {
 		this.password = password;
 		this.role = role;
 		this.advertises = new ArrayList<>();
+		this.totalAdds = 0;
 	}
 	public int getId() {
 		return id;
@@ -85,6 +87,13 @@ public class Client {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public int getTotalAdds() {
+		return totalAdds;
+	}
+	public void setTotalAdds(int totalAdds) {
+		this.totalAdds = totalAdds;
 	}
 	@Override
 	public String toString() {
