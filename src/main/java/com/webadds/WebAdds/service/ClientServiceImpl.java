@@ -46,4 +46,9 @@ public class ClientServiceImpl implements ClientService {
 	public Client getClientByUsername(String username) {
 		return clientDao.findByUsername(username);
 	}
+
+	@Override
+	public int getTotalClientCLient() {
+		return clientDao.getTotalCLientCount();
+	}
 }

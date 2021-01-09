@@ -1,4 +1,7 @@
-
-p.policy{
+p.policy {
 	line-height: 28px;
+}
+
+#brand {
+	font-family: 'Goldman', cursive;
 }

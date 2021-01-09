@@ -57,6 +57,7 @@ public class UserController {
 	
 	private User loggedUser;
 	private String username;
+	int points;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -97,6 +98,10 @@ public class UserController {
 		 
 		model.addAttribute("advertises", advertiseUserRecords);
 		model.addAttribute("username", username);
+		if(this.points != 0) {
+			model.addAttribute("points", points);
+			points = 0;
+		}
 		return "user-advertises";
 	}
 	
@@ -115,13 +120,14 @@ public class UserController {
 	}
 	
 	@PostMapping("advertise/{advertiseId}")
-	public String markAddSeen(@PathVariable("advertiseId") int advertiseId) {
+	public String markAddSeen(@PathVariable("advertiseId") int advertiseId,
+					Model model) {
 		AssignRecord userRecord = recordDao.getByUserIdAndAddId(loggedUser.getId(), advertiseId);
 		userRecord.setIsSeen(1);
 		recordDao.save(userRecord);
 		
 		appUserService.creditPointsToTheUserAccount(loggedUser.getId(), userRecord.getPoints());
-		
+		this.points = userRecord.getPoints();
 		return "redirect:/user/advertises";
 	}
 	

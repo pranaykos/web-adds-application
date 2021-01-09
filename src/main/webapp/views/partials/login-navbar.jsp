@@ -1,5 +1,6 @@
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%-- <%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%> --%>	
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,12 +34,26 @@
 							aria-describedby="inputGroup-sizing-sm" placeholder="Password"
 							id="password" name="password" required>
 					</div>
-					<button class="btn btn-sm btn-primary" type="submit">Login</button>
+					<button class="btn btn-sm btn-primary" type="submit">Login <i class="fas fa-door-open"></i></button>
 				</form>
 
 			</c:when>
 			<c:otherwise>
-				<p class="text-light h-100 align-items-center my-2">Welcome</p>
+				<p class="text-light h-100 align-items-center my-2 mr-3">Welcome</p>
+				
+				<security:authorize access="hasRole('ROLE_USER')"> 
+					<a href="user/profile" class="text-light h-100 align-items-center my-2">Go to Profile</a>
+				</security:authorize>
+				
+				<security:authorize access="hasRole('ROLE_ADMIN')"> 
+					<a href="admin/dashboard" class="text-light h-100 align-items-center my-2">Go to Dashboard</a>
+				</security:authorize>
+				
+				<security:authorize access="hasRole('ROLE_CLIENT')"> 
+					<a href="client/profile" class="text-light h-100 align-items-center my-2">Go to Client Manager</a>
+				</security:authorize>				
+				
+				<a href="logout" class="text-light h-100 align-items-center my-0 ml-auto btn btn-danger btn-sm">Logout <i class="fas fa-sign-out-alt"></i></a>
 			</c:otherwise>
 		</c:choose>
 	</div>

@@ -27,13 +27,13 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mx-auto">
-				<li class="nav-item active"><a class="nav-link" href="profile">Profile</a>
+				<li class="nav-item"><a class="nav-link" href="profile">Profile</a>
 				</li>
-				<li class="nav-item active"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link"
 					href="advertises">Advertises</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="redemption-requests">Redemption Req</a></li>
-				<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a>
+				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
 				</li>
 			</ul>
 		</div>

@@ -51,7 +51,7 @@
 							<small class="text-muted">${advertise.createdOn}</small>
 						</p>
 						<div class="d-flex">
-							<h3 id="timer" class="d-inline mr-3">2</h3>
+							<h3 id="timer" class="d-inline mr-3">10</h3>
 							<div id="result" class="d-inline-block"></div>
 						</div>
 					</div>

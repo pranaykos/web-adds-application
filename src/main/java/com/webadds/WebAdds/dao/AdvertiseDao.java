@@ -19,4 +19,13 @@ public interface AdvertiseDao extends JpaRepository<Advertise, Integer> {
 	@Query("SELECT a FROM Advertise a WHERE a.isAssigned =0")
 	public List<Advertise> getUnAssignedAdds();
 	
+	@Query("SELECT COUNT(*) FROM Advertise a WHERE a.isAssigned = 1")
+	public int getAssignedAdvertiseCount();
+	
+	@Query("SELECT COUNT(*) FROM Advertise a WHERE a.isAssigned = 0")
+	public int getUnAssignedAdvertiseCount();
+	
+	@Query("SELECT COUNT(*) FROM Advertise")
+	public int getAllAdvertiseCount();
+	
 }

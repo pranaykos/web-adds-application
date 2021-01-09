@@ -74,5 +74,10 @@ public class AppUserServiceImpl implements AppUserService {
 		return false;
 	}
 
+	@Override
+	public int getTotalUserCount() {
+		return userDao.getTotalUserCount();
+	}
+
 	
 }

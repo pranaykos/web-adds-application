@@ -9,7 +9,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<title>Insert title here</title>
+<title>Admin dashboard</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 					style="max-width: 18rem;">
 					<div class="card-header text-center">All adds</div>
 					<div class="card-body p-3">
-						<h5 class="card-title display-3 text-center">7</h5>
+						<h5 class="card-title display-3 text-center">${total}</h5>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 					style="max-width: 18rem;">
 					<div class="card-header text-center">Assigned adds</div>
 					<div class="card-body p-3">
-						<h5 class="card-title display-3 text-center">4</h5>
+						<h5 class="card-title display-3 text-center">${assigned}</h5>
 					</div>
 				</div>
 			</div>
@@ -41,13 +41,39 @@
 					style="max-width: 18rem;">
 					<div class="card-header text-center">Unassigned adds</div>
 					<div class="card-body p-3">
-						<h5 class="card-title display-3 text-center">3</h5>
+						<h5 class="card-title display-3 text-center">${unassigned}</h5>
 					</div>
 				</div>
 			</div>
 		</div>
 
 
+
+<div class="container mt-5">
+		<div class="card">
+			<div class="card-body">
+
+				<div class="row">
+					<div class="col-md-6 my-4">
+						<h5 class="card-title mb-1">All User</h5>
+						<p class="card-text">${totalUser}</p>
+					</div>
+					<div class="col-md-6 my-4">
+						<h5 class="card-title mb-1">All Clients</h5>
+						<p class="card-text">${totalClient}</p>
+					</div>
+					<div class="col-md-6">
+						<h5 class="card-title mb-1">Redemption Requests</h5>
+						<p class="card-text">${totalRedemp}</p>
+					</div>
+					<div class="col-md-6">
+						<h5 class="card-title mb-1">Redemptions Approved</h5>
+						<p class="card-text">${totalAppRedemp}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 

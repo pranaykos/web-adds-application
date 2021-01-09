@@ -11,4 +11,5 @@ public interface AppUserService {
 	public List<ApplicationUser> getAllUsers();
 	public User getUserByEmail(String email);
 	public boolean creditPointsToTheUserAccount(int userId, int points);
+	public int getTotalUserCount();
 }

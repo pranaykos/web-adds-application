@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User Profile</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -27,11 +27,11 @@
 			<ul class="navbar-nav mx-auto">
 				<li class="nav-item active"><a class="nav-link" href="">Profile</a>
 				</li>
-				<li class="nav-item active"><a class="nav-link"
+				<li class="nav-item "><a class="nav-link"
 					href="advertises">Advertises</a></li>
-				<li class="nav-item active"><a class="nav-link" href="redemption-requests">Redemption
+				<li class="nav-item "><a class="nav-link" href="redemption-requests">Redemption
 						Req</a></li>
-				<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a>
+				<li class="nav-item "><a class="nav-link" href="/logout">Logout</a>
 				</li>
 			</ul>
 		</div>

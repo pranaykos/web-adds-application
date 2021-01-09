@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User advertises</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -25,18 +25,32 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mx-auto">
-				<li class="nav-item active"><a class="nav-link" href="profile">Profile</a>
+				<li class="nav-item"><a class="nav-link" href="profile">Profile</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="advertises">Advertises</a></li>
-				<li class="nav-item active"><a class="nav-link" href="redemption-requests">Redemption
-						Req</a></li>
-				<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a>
+				<li class="nav-item"><a class="nav-link"
+					href="redemption-requests">Redemption Req</a></li>
+				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	</nav>
+
+	<c:if test="${points != null}">
+		<div class="alert alert-success alert-dismissible fade show"
+			role="alert">
+			<div class="container">
+				<strong>Congratulation!</strong> ${points} Points have been added to
+				your account, Check your account <a href="profile">Here</a>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</c:if>
 
 	<div class="container my-5">
 		<div class="row">
@@ -64,10 +78,13 @@
 								<small class="text-muted"> Donecid elit non mi </small>
 
 								<c:if test="${advertise.assignRecord.isSeen == 1}">
-									<a class="btn btn-success btn-sm disabled" href="" role="button">Seen</a>
+									<a class="btn btn-success btn-sm disabled" href=""
+										role="button">Seen</a>
 								</c:if>
 								<c:if test="${advertise.assignRecord.isSeen == 0}">
-									<a class="btn btn-primary btn-sm" href="advertise/${advertise.advertise.id}" role="button">Preview Add</a>
+									<a class="btn btn-primary btn-sm"
+										href="advertise/${advertise.advertise.id}" role="button">Preview
+										Add</a>
 								</c:if>
 
 							</div>

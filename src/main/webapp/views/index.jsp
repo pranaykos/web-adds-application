@@ -10,6 +10,15 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+	integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+	crossorigin="anonymous" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Goldman&display=swap"
+	rel="stylesheet">
 
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -23,44 +32,44 @@
 	<div class="container-fluid mt-5">
 		<div class="row">
 			<div class="col-md-3 offset-md-1">
-				<h1 style="font-weight: 400" class="text-center mb-3">Dear Customer</h1>
+				<h1 style="font-weight: 400" class="text-center mb-3">Dear
+					Customer</h1>
 				<p class="text-center policy">We here provide you with some
-					advertisements of our clients who in turn pay you for viewing
-					their ads. You will have to register with us in order to receive
-					benefits of our site. Your e-mail id will be your login id. After
-					successful registration you will receive ads in your inbox and
-					start earning. You can change your password anytime as per your
-					wish later. You are expected to read the EULA very carefully
-					understand and agree to the terms and conditions. You are expected
-					not to hide/minimize/overlook the contents of the advertisement.
-					You will receive advertisements in your inbox. Each advertisement
-					after its successful execution will be the key to deposit real
-					money in your account. You are expected to read each advertisement
-					very carefully and propagate the matter to as much of persons /
-					friends / relatives so that content is known widely to large mass
-					of people.</p>
+					advertisements of our clients who in turn pay you for viewing their
+					ads. You will have to register with us in order to receive benefits
+					of our site. Your e-mail id will be your login id. After successful
+					registration you will receive ads in your inbox and start earning.
+					You can change your password anytime as per your wish later. You
+					are expected to read the EULA very carefully understand and agree
+					to the terms and conditions. You are expected not to
+					hide/minimize/overlook the contents of the advertisement. You will
+					receive advertisements in your inbox. Each advertisement after its
+					successful execution will be the key to deposit real money in your
+					account. You are expected to read each advertisement very carefully
+					and propagate the matter to as much of persons / friends /
+					relatives so that content is known widely to large mass of people.</p>
 			</div>
 			<div class="col-md-4">
 				<h1 style="font-weight: 400" class="text-center mb-3">Dear
 					Advertiser/Client</h1>
-				<p class="text-center policy">Advertisement does not guarantee a sudden boost in sales 
-					neither has it guaranteed sales but it'necessary part of business
-					of any type without which no business survives. Whatever is your
-					product / service your business won't flourish without advertising
-					it. You may upload with our help your advertisement which will be
-					viewed by sensible people. Your advertisement may consist of
-					various types of mixed contents. Presently images are being
-					published later on we will provide the URL of your web-site /
-					advertisement (what-ever you choose to publicize); the upgradation
-					work is in progress. Our customers will receive your advertisement
-					in their inbox of our site they will read the contents understand
-					and propagate the same to all the persons they are in contact. A
-					very large mass of people will come to know what you want to say.
-					So your purpose of advertising is solved. If you do not have
-					web-site of your own we have dedicated team of experts who will
-					design the web-site for your company. Now-a-days internet is in
-					everybody's life and so there are lot more chances to get
-					publicity. So why not e-advertise.s</p>
+				<p class="text-center policy">Advertisement does not guarantee a
+					sudden boost in sales neither has it guaranteed sales but
+					it'necessary part of business of any type without which no business
+					survives. Whatever is your product / service your business won't
+					flourish without advertising it. You may upload with our help your
+					advertisement which will be viewed by sensible people. Your
+					advertisement may consist of various types of mixed contents.
+					Presently images are being published later on we will provide the
+					URL of your web-site / advertisement (what-ever you choose to
+					publicize); the upgradation work is in progress. Our customers will
+					receive your advertisement in their inbox of our site they will
+					read the contents understand and propagate the same to all the
+					persons they are in contact. A very large mass of people will come
+					to know what you want to say. So your purpose of advertising is
+					solved. If you do not have web-site of your own we have dedicated
+					team of experts who will design the web-site for your company.
+					Now-a-days internet is in everybody's life and so there are lot
+					more chances to get publicity. So why not e-advertise.s</p>
 			</div>
 			<div class="col-md-3">
 

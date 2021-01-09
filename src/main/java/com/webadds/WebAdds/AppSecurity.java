@@ -50,7 +50,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter{
 			.formLogin()
 				.loginPage("/login").permitAll()
 				.loginProcessingUrl("/login-process")
-//				.defaultSuccessUrl("/", true)
+				.defaultSuccessUrl("/", true)
 			.and()
 				.logout()
 				.logoutUrl("/logout")

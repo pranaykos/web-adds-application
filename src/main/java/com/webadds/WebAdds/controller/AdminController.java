@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -52,11 +54,21 @@ public class AdminController {
 	@Autowired
 	private RedemptionDao redemptionDao;
 	
+	@Autowired
+	private EntityManager manager;
+	
 	/*@Autowired
 	private SessionFactory sessionFactory;*/
 	
 	@GetMapping("dashboard")
-	public String adminDashboard() {
+	public String adminDashboard(Model model) {
+		model.addAttribute("total", advertiseDao.getAllAdvertiseCount());
+		model.addAttribute("assigned", advertiseDao.getAssignedAdvertiseCount());
+		model.addAttribute("unassigned", advertiseDao.getUnAssignedAdvertiseCount());
+		model.addAttribute("totalUser", userService.getTotalUserCount());
+		model.addAttribute("totalClient", clientService.getTotalClientCLient());
+		model.addAttribute("totalRedemp", redemptionDao.getTotalRedemptionCount());
+		model.addAttribute("totalAppRedemp", redemptionDao.getApprovedRedemptionCount());
 		return "dashboard";
 	}
 	
@@ -207,24 +219,25 @@ public class AdminController {
 	}
 	
 	@PostMapping("approve")
+	@Transactional
 	public String approveRedemption(@RequestParam("redemption-id") int redemptionId) {
 		Optional<Redemptionreq> result = redemptionDao.findById(redemptionId);
-		/*if(result.isPresent()) {
+		if(result.isPresent()) {
 			Redemptionreq redemption = result.get();
 			redemption.setIsAccepted(1);
 			redemptionDao.save(redemption);
 			
 //			Delete all user related Assign Record in the database
-			Session session = sessionFactory.openSession();
+			Session session = manager.unwrap(Session.class);
 			int userId = redemption.getUserId();
 			
 			Query<AssignRecord> query = session.createQuery("DELETE AssignRecord a WHERE a.userId =:userId ");
-			query.setParameter(":userId", userId);
+			query.setParameter("userId", userId);
 			query.executeUpdate();
 //			End of deleting the assign record
 			
 			return "redirect:redemption-req";
-		}*/
+		}
 		return "redirect:redemption-req";
 	}
 }

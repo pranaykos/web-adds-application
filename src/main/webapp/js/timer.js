@@ -21,6 +21,7 @@ let timerFunction = () => {
 let form = '<form action="" method="POST" class="form-inline my-2 my-lg-0"><button class="btn btn-success btn-sm" type="submit">Claim points</button></form>';
 
 timerFunction().then(() => {
+	timer.innerHTML = "";
     result.innerHTML = form;
 });
 

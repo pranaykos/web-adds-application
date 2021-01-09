@@ -13,4 +13,10 @@ public interface RedemptionDao extends JpaRepository<Redemptionreq, Integer> {
 	
 	@Query("SELECT r FROM Redemptionreq r WHERE r.isAccepted = 1")
 	public List<Redemptionreq> getAllAcceptedRedemptions();
+	
+	@Query("SELECT COUNT(*) FROM Redemptionreq")
+	public int getTotalRedemptionCount();
+	
+	@Query("SELECT COUNT(*) FROM Redemptionreq r WHERE r.isAccepted = 1")
+	public int getApprovedRedemptionCount();
 }

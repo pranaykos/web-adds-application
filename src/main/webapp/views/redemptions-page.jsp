@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Redemption Page</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+	integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+	crossorigin="anonymous" />
 </head>
 <body>
 
@@ -41,7 +45,8 @@
 						<c:choose>
 							<c:when test="${redemption.isAccepted == 1}">
 								<td><span style="font-size: 1em"
-									class="badge badge-success badge-pill p-2">Approved</span></td>
+									class="badge badge-success badge-pill p-2">Approved <i
+										class="fas fa-check-circle"></i></span></td>
 							</c:when>
 							<c:otherwise>
 								<td>
@@ -49,11 +54,11 @@
 										class="badge badge-primary badge-pill p-2">Approve Now
 									</span> -->
 
-									<form method="POST" action="approve" class="form-inline my-2 my-lg-0">
+									<form method="POST" action="approve"
+										class="form-inline my-2 my-lg-0">
 										<input hidden name="redemption-id" value="${redemption.id}" />
 										<button class="btn btn-primary rounded-pill my-2 my-sm-0"
-												style="font-weight: 600"
-											type="submit">Approve Now</button>
+											style="font-weight: 600" type="submit">Approve Now</button>
 									</form>
 								</td>
 							</c:otherwise>
