@@ -74,6 +74,11 @@ public class AssignRecord {
 	public void setIsClaimed(int isClaimed) {
 		this.isClaimed = isClaimed;
 	}
+	@Override
+	public String toString() {
+		return "AssignRecord [id=" + id + ", userId=" + userId + ", addId=" + addId + ", points=" + points + ", isSeen="
+				+ isSeen + ", isClaimed=" + isClaimed + "]";
+	}
 	
 	
 	

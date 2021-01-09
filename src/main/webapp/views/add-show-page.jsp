@@ -12,11 +12,9 @@
 </head>
 <body>
 
-
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-secondary my-0">
 	<div class="container">
-		<a class="navbar-brand" href="">Client Manager</a>
+		<a class="navbar-brand text-capitalize" href="#">Hi, ${username}</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -25,52 +23,43 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="profile">Profile</a>
+			<ul class="navbar-nav mx-auto">
+				<li class="nav-item "><a class="nav-link"
+					href="${pageContext.request.contextPath}/user/profile">Profile</a></li>
+				<li class="nav-item "><a class="nav-link"
+					href="${pageContext.request.contextPath}/user/advertises">Advertises</a></li>
+				<li class="nav-item "><a class="nav-link" href="#">Redemption
+						Req</a></li>
+				<li class="nav-item "><a class="nav-link" href="/logout">Logout</a>
 				</li>
-				<li class="nav-item "><a class="nav-link" href="all-adds">All
-						adds</a></li>
-				<li class="nav-item "><a class="nav-link" href="add-report">Adds
-						report</a></li>
-				<li class="nav-item "><a class="nav-link" href="upload-add">New Add</a></li>
-				<li class="nav-item "><a class="nav-link" href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>
 	</nav>
 
-
-
-	<div class="container mt-5">
-		<div class="card">
-			<h5 class="card-header text-capitalize">${client.companyName}</h5>
-			<div class="card-body">
-
-				<div class="row">
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Email</h5>
-						<p class="card-text">${client.email}</p>
-					</div>
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Username</h5>
-						<p class="card-text">${client.username}</p>
-					</div>
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Total adds</h5>
-						<p class="card-text">${client.totalAdds}</p>
-					</div>
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Assigned adds</h5>
-						<p class="card-text">${totalAssigned}</p>
-					</div>
-					<div class="col-md-6 my-4">
-						<h5 class="card-title mb-1">Address</h5>
-						<p class="card-text">${client.address}</p>
+	<div class="container my-0">
+		<div class="card mb-3 w-100">
+			<div class="row no-gutters">
+				<div class="col-md-8">
+					<img src="${advertise.imagePath}" class="card-img h-100" alt="..." />
+				</div>
+				<div class="col-md-4">
+					<div class="card-body">
+						<h5 class="card-title">${advertise.titleName}</h5>
+						<p class="card-text">${advertise.description}</p>
+						<p class="card-text">
+							<small class="text-muted">${advertise.createdOn}</small>
+						</p>
+						<div class="d-flex">
+							<h3 id="timer" class="d-inline mr-3">2</h3>
+							<div id="result" class="d-inline-block"></div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<a href="upload-add" class="btn btn-outline-primary">Upload add</a>
 		</div>
+
+
 	</div>
 
 
@@ -86,5 +75,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="/js/timer.js"></script>
 </body>
 </html>

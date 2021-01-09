@@ -31,6 +31,7 @@ public class ClientServiceImpl implements ClientService {
 		client.setCompanyName(applicationClient.getCompanyName());
 		client.setUsername(applicationClient.getUsername());
 		client.setPassword(encoder.encode(applicationClient.getPassword()));
+		client.setAddress(applicationClient.getAddress());
 		client.setRole("ROLE_CLIENT");
 		
 		return client;

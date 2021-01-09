@@ -17,6 +17,10 @@
 
 	<div class="container my-4">
 
+	<c:if test="${advertises == null}">
+		<h1>No advertise is added</h1>
+	</c:if>
+
 		<div class="row row-cols-1 row-cols-md-3">
 
 			<c:forEach items="${advertises}" var="advertise">

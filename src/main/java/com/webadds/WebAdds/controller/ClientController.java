@@ -1,11 +1,14 @@
 package com.webadds.WebAdds.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -66,8 +69,11 @@ public class ClientController {
 	}
 	
 	@PostMapping("register")
-	public String registerClient(@ModelAttribute("client") ApplicationClient client) {
-		System.out.println("Added client is "+client);
+	public String registerClient(@Valid @ModelAttribute("client") ApplicationClient client,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "client-register-form";	
+		}
 		clientService.registerClient(client);
 		return "redirect:/";
 	}

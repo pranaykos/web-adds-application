@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.webadds.WebAdds.authService.ApplicationUserService;
 import com.webadds.WebAdds.dao.AdvertiseDao;
 import com.webadds.WebAdds.dao.RecordDao;
+import com.webadds.WebAdds.dao.RedemptionDao;
 import com.webadds.WebAdds.entity.Advertise;
 import com.webadds.WebAdds.entity.AssignRecord;
 import com.webadds.WebAdds.entity.Client;
+import com.webadds.WebAdds.entity.Redemptionreq;
 import com.webadds.WebAdds.pojos.ApplicationUser;
 import com.webadds.WebAdds.service.AppUserService;
 import com.webadds.WebAdds.service.AppUserServiceImpl;
@@ -41,9 +46,14 @@ public class AdminController {
 	@Autowired
 	private ClientService clientService;
 	
-	
 	@Autowired
 	private RecordDao recordDao;
+	
+	@Autowired
+	private RedemptionDao redemptionDao;
+	
+	/*@Autowired
+	private SessionFactory sessionFactory;*/
 	
 	@GetMapping("dashboard")
 	public String adminDashboard() {
@@ -178,5 +188,43 @@ public class AdminController {
 	public String showAllClients(Model model) {
 		model.addAttribute("clients", clientService.getAllClients());
 		return "all-clients";
+	}
+	
+	@GetMapping("redemptions")
+	public String showRedemptions(Model model) {
+		List<Redemptionreq> allAcceptedRedemptions = redemptionDao.getAllAcceptedRedemptions();
+		model.addAttribute("redemptions", allAcceptedRedemptions);
+		model.addAttribute("message", "All accepted Redemptions");
+		return "redemptions-page";
+	}
+	
+	@GetMapping("redemption-req")
+	public String showRedemptionReq(Model model) {
+		List<Redemptionreq> allRequests = redemptionDao.findAll();
+		model.addAttribute("redemptions", allRequests);
+		model.addAttribute("message", "All Redemptions");
+		return "redemptions-page";
+	}
+	
+	@PostMapping("approve")
+	public String approveRedemption(@RequestParam("redemption-id") int redemptionId) {
+		Optional<Redemptionreq> result = redemptionDao.findById(redemptionId);
+		/*if(result.isPresent()) {
+			Redemptionreq redemption = result.get();
+			redemption.setIsAccepted(1);
+			redemptionDao.save(redemption);
+			
+//			Delete all user related Assign Record in the database
+			Session session = sessionFactory.openSession();
+			int userId = redemption.getUserId();
+			
+			Query<AssignRecord> query = session.createQuery("DELETE AssignRecord a WHERE a.userId =:userId ");
+			query.setParameter(":userId", userId);
+			query.executeUpdate();
+//			End of deleting the assign record
+			
+			return "redirect:redemption-req";
+		}*/
+		return "redirect:redemption-req";
 	}
 }

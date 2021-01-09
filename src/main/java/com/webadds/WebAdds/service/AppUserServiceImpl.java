@@ -2,6 +2,7 @@ package com.webadds.WebAdds.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,25 @@ public class AppUserServiceImpl implements AppUserService {
 				.collect(Collectors.toList());
 		
 		return applicationUsers;
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return userDao.findByEmailId(email);
+	}
+
+	@Override
+	public boolean creditPointsToTheUserAccount(int userId, int points) {
+		Optional<User> result = userDao.findById(userId);
+		if(result.isPresent()) {
+			User user = result.get();
+			int currentCrefitPoints = user.getPoints();
+			int newCreditPoints = currentCrefitPoints + points; 
+			user.setPoints(newCreditPoints);
+			userDao.save(user);
+			return true;
+		}
+		return false;
 	}
 
 	

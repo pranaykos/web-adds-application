@@ -22,6 +22,7 @@ public class User {
 	private String country;
 	private String mobileNo;
 	private String role;
+	private int isCashClaimed;
 	private int points;
 
 	public User() {
@@ -41,9 +42,9 @@ public class User {
 		this.address = address;
 		this.country = country;
 		this.mobileNo = mobileNo;
+		this.isCashClaimed = 0;
 		this.points = 0;
 	}
-	
 
 	public int getId() {
 		return id;
@@ -124,7 +125,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 	public int getPoints() {
 		return points;
 	}
@@ -133,11 +134,19 @@ public class User {
 		this.points = points;
 	}
 
+	public int getIsCashClaimed() {
+		return isCashClaimed;
+	}
+
+	public void setIsCashClaimed(int isCashClaimed) {
+		this.isCashClaimed = isCashClaimed;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", address=" + address + ", country=" + country + ", mobileNo="
-				+ mobileNo + ", role=" + role + "]";
+				+ mobileNo + ", role=" + role + ", isCashClaimed=" + isCashClaimed + ", points=" + points + "]";
 	}
 	
 	

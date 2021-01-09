@@ -26,10 +26,10 @@
         <a class="nav-link" href="all-users">All Users</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Redemption</a>
+        <a class="nav-link" href="redemptions">Redemption</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Redemption Request</a>
+        <a class="nav-link" href="redemption-req">Redemption Request</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/logout">Logout</a>

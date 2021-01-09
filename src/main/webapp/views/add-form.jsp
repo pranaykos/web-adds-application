@@ -29,9 +29,9 @@
 				</li>
 				<li class="nav-item "><a class="nav-link" href="all-adds">All
 						adds</a></li>
-				<li class="nav-item active"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link"
 					href="add-report">Adds report</a></li>
-				<li class="nav-item "><a class="nav-link" href="upload-add">New
+				<li class="nav-item active "><a class="nav-link" href="upload-add">New
 						Add</a></li>
 				<li class="nav-item "><a class="nav-link" href="/logout">Logout</a></li>
 			</ul>
