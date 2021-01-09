@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class BlogAppApplication {
+public class WebAddsApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = 
-					SpringApplication.run(BlogAppApplication.class, args);
+					SpringApplication.run(WebAddsApplication.class, args);
 		
 		System.out.println("Hellwo world");
 		
